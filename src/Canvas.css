@@ -1,0 +1,6 @@
+.canvas-container {
+}
+
+.canvas-container .ecard-canvas {
+  outline: green 3px solid;
+}
