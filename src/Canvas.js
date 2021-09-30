@@ -3,6 +3,8 @@ import Paper from 'paper';
 import draw1 from 'draw1';
 import './Canvas.css';
 
+// https://stackoverflow.com/questions/56197908/how-to-use-paperjs-with-react
+
 const Canvas = ({ width = 550, height = 320, ...props }) => {
   const canvasRef = useRef(null);
 
