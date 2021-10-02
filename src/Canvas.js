@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Paper from 'paper';
-import draw1 from 'draw1';
+//import draw1 from 'draw1';
+import CandyCrush from 'sketches/candy-crush/CandyCrush';
 import './Canvas.css';
 
 // https://stackoverflow.com/questions/56197908/how-to-use-paperjs-with-react
@@ -11,7 +12,16 @@ const Canvas = ({ width = 550, height = 320, ...props }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     Paper.setup(canvas);
-    draw1();
+
+    const candyCrush = new CandyCrush();
+
+    const view = Paper.view;
+
+    view.onFrame = event => {
+      candyCrush.onFrame();
+    };
+
+    Paper.view.draw();
   }, []);
 
   return (

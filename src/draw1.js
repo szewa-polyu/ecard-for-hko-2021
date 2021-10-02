@@ -1,14 +1,14 @@
-import Paper from "paper";
+import Paper from 'paper';
 
-const draw1 = () => {
+const draw1 = _ => {
   let myPath = new Paper.Path();
 
-  Paper.view.onMouseDown = (event) => {
-    myPath.strokeColor = "white";
+  Paper.view.onMouseDown = event => {
+    myPath.strokeColor = 'white';
     myPath.strokeWidth = 3;
   };
 
-  Paper.view.onMouseDrag = (event) => {
+  Paper.view.onMouseDrag = event => {
     myPath.add(event.point);
   };
 
