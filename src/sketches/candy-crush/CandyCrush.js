@@ -4,7 +4,7 @@
 import Paper from 'paper';
 import Ball from './Ball';
 
-const { Point, Raster } = Paper;
+const { Point, Raster, PointText, Color } = Paper;
 
 class CandyCrush {
   constructor() {
@@ -15,7 +15,7 @@ class CandyCrush {
     const viewCenterY = view.center.y;
 
     const viewSizeWidthPortion = viewSizeWidth / 7;
-    const viewSizeHeightPortion = viewSizeHeight / 4;
+    const viewSizeHeightPortion = viewSizeHeight / 3.5;
 
     const finalPosY = viewCenterY + viewSizeHeightPortion;
 
@@ -73,7 +73,7 @@ class CandyCrush {
         imgUrl: 'set1/drtin.png',
         finalPos: {
           x: viewCenterX + 0 * viewSizeWidthPortion,
-          y: finalPosY
+          y: finalPosY * 0.9
         }
       }
     ].map(({ imgUrl, ...rest }) => ({
@@ -108,7 +108,8 @@ class CandyCrush {
     this.balls = balls;
 
     // set background image
-    const bgImg = new Raster(process.env.PUBLIC_URL + 'images/1883.jpg');
+    const bgImg = new Raster(process.env.PUBLIC_URL + 'images/1883_tree.jpg');
+    bgImg.opacity = 0;
     bgImg.position = view.center;
     bgImg.sendToBack();
     bgImg.onLoad = event => {
@@ -117,9 +118,21 @@ class CandyCrush {
         viewSizeHeight / bgImg.height,
         view.center
       );
-      bgImg.opacity = 0;
     };
     this.bgImg = bgImg;
+
+    // set text
+    const text = new PointText(view.center);
+    this.text = text;
+    text.content = "Season's Greetings!";
+    text.opacity = 0;
+    text.fontSize = 36;
+    text.position = new Point(viewCenterX, viewCenterY * 0.65);
+    this.textColorStop1 = new Color(1, 0, 0);
+    this.textColorStop2 = new Color(0, 1, 0);
+    this.textColorStop3 = new Color(0, 0, 1);
+    //text.fillColor = new Color(1, 0, 0);
+    this.setTextColorGrad();
 
     this.isFinalStage = false;
 
@@ -131,9 +144,11 @@ class CandyCrush {
       }
 
       setTimeout(_ => {
-        this.fadeInBgImg();
+        const time = 2000;
+        this.fadeInBgImg(time);
+        this.fadeInText(time);
       }, 1000);
-    }, 5000);
+    }, 1000);
   }
 
   onFrame() {
@@ -148,18 +163,48 @@ class CandyCrush {
       for (let ball of balls) {
         ball.iterate();
       }
+    } else {
+      this.changeTextColorGrad();
     }
   }
 
   /* chris */
 
-  fadeInBgImg() {
+  fadeInBgImg(time) {
     this.bgImg.tweenTo(
       {
         opacity: 1
       },
-      2000
+      time
     );
+  }
+
+  fadeInText(time) {
+    this.text.tweenTo(
+      {
+        opacity: 1
+      },
+      time
+    );
+  }
+
+  changeTextColorGrad(inc = 1) {
+    this.textColorStop1.hue += inc;
+    this.textColorStop2.hue += inc;
+    this.textColorStop3.hue += inc;
+
+    this.setTextColorGrad();
+  }
+
+  setTextColorGrad() {
+    const text = this.text;
+    text.fillColor = {
+      gradient: {
+        stops: [this.textColorStop1, this.textColorStop2, this.textColorStop3]
+      },
+      origin: text.bounds.topLeft,
+      destination: text.bounds.bottomRight
+    };
   }
 }
 
