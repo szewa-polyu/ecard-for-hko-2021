@@ -55,6 +55,8 @@ class Ball {
     if (Math.abs(this.rotateSpeed) < minRotateSpeed) {
       this.rotateSpeed = Math.sign(this.rotateSpeed) * minRotateSpeed;
     }
+
+    this.finalPos = finalPos;
   }
 
   iterate() {
@@ -157,13 +159,28 @@ class Ball {
 
   moveToFinalPos() {
     const raster = this.raster;
-    raster.tweenTo(
-      {
-        position: Paper.view.center,
-        rotation: 0
-      },
-      2000 + Math.random() * 3000
-    );
+    const center = Paper.view.center;
+    raster
+      .tweenTo(
+        {
+          position: {
+            x: center.x,
+            y: this.finalPos.y
+          },
+          rotation: 0
+        },
+        500 + Math.random() * 500
+      )
+      .then(_ => {
+        setTimeout(_ => {
+          raster.tweenTo(
+            {
+              position: this.finalPos
+            },
+            500 + Math.random() * 500
+          );
+        }, 1000);
+      });
   }
 }
 
