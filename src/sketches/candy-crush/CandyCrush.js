@@ -8,6 +8,10 @@ const { Point, Raster, PointText, Color } = Paper;
 
 class CandyCrush {
   constructor() {
+    this.init();
+  }
+
+  init() {
     const view = Paper.view;
     const viewSizeWidth = view.size.width;
     const viewSizeHeight = view.size.height;
@@ -136,19 +140,33 @@ class CandyCrush {
 
     this.isFinalStage = false;
 
+    this.tweenBgImgCurrent = null;
+    this.tweenTextCurrent = null;
+  }
+
+  reset() {
+    const time = 0.1;
+    this.fadeBgImg(false, time);
+    this.fadeText(false, time);
+    this.isFinalStage = false;
+  }
+
+  start(transitionTime) {
+    this.reset();
+
     setTimeout(_ => {
       this.isFinalStage = true;
 
-      for (let ball of balls) {
+      for (let ball of this.balls) {
         ball.moveToFinalPos();
       }
 
       setTimeout(_ => {
         const time = 2000;
-        this.fadeInBgImg(time);
-        this.fadeInText(time);
+        this.fadeBgImg(true, time);
+        this.fadeText(true, time);
       }, 1000);
-    }, 1000);
+    }, transitionTime);
   }
 
   onFrame() {
@@ -170,19 +188,29 @@ class CandyCrush {
 
   /* chris */
 
-  fadeInBgImg(time) {
-    this.bgImg.tweenTo(
-      {
-        opacity: 1
-      },
-      time
-    );
+  fadeBgImg(isFadeIn, time) {
+    if (this.tweenBgImgCurrent) {
+      this.tweenBgImgCurrent.stop();
+      this.tweenBgImgCurrent = null;
+    }
+    setTimeout(_ => {
+      this.tweenBgImgCurrent = this.bgImg.tweenTo(
+        {
+          opacity: isFadeIn ? 1 : 0
+        },
+        time
+      );
+    }, 100);
   }
 
-  fadeInText(time) {
-    this.text.tweenTo(
+  fadeText(isFadeIn, time) {
+    if (this.tweenTextCurrent) {
+      this.tweenTextCurrent.stop();
+      this.tweenTextCurrent = null;
+    }
+    this.tweenTextCurrent = this.text.tweenTo(
       {
-        opacity: 1
+        opacity: isFadeIn ? 1 : 0
       },
       time
     );

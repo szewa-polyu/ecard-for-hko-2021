@@ -1,10 +1,84 @@
 .canvas-container {
+  --transition-time-default: 0.4s;
+  --transition-default: all var(--transition-time-default);
+
+  --xmas-green: rgb(0, 135, 62);
+  --xmas-red: rgb(228, 10, 45);
+
+  position: relative;
 }
 
 .canvas-container .ecard-canvas {
-  outline: green 3px solid;
+  width: 550px;
+  height: 320px;
+
+  transition: var(--transition-default);
+
+  outline: var(--xmas-green) 3px solid;
 
   /* https://www.eggradients.com/category/blue-gradient */
   background-color: #abe9cd;
   background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+}
+
+.canvas-container .ecard-canvas.show {
+  opacity: 1;
+}
+
+.canvas-container .ecard-canvas.hide {
+  opacity: 0.4;
+}
+
+.canvas-container .button {
+  transition: var(--transition-default);
+
+  cursor: pointer;
+
+  border-radius: 10px;
+}
+
+.canvas-container .button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.canvas-container .button.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* https://css-tricks.com/making-pure-css-playpause-button/ */
+.canvas-container .button.play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 74px;
+  height: 74px;
+  border-style: solid;
+  border-width: 37px;
+  border-color: var(--xmas-green);
+
+  background-color: var(--xmas-red);
+
+  border-width: 37px 0px 37px 74px;
+  border-color: var(--xmas-red) var(--xmas-red) var(--xmas-red)
+    var(--xmas-green);
+}
+
+/* https://css-tricks.com/making-pure-css-playpause-button/ */
+.canvas-container .button.stop {
+  position: absolute;
+  bottom: 0.25%;
+  right: 0.25%;
+  transform: translate(-50%, -50%);
+
+  width: 37px;
+  height: 37px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: var(--xmas-green);
+
+  background-color: var(--xmas-red);
 }
