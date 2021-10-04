@@ -81,7 +81,7 @@ class CandyCrush {
         }
       }
     ].map(({ imgUrl, ...rest }) => ({
-      imgUrl: process.env.PUBLIC_URL + 'images/' + imgUrl,
+      imgUrl: process.env.PUBLIC_URL + '/images/' + imgUrl,
       ...rest
     }));
 
@@ -112,7 +112,7 @@ class CandyCrush {
     this.balls = balls;
 
     // set background image
-    const bgImg = new Raster(process.env.PUBLIC_URL + 'images/1883_tree.jpg');
+    const bgImg = new Raster(process.env.PUBLIC_URL + '/images/1883_tree.jpg');
     bgImg.opacity = 0;
     bgImg.position = view.center;
     bgImg.sendToBack();

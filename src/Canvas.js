@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import Paper from 'paper';
-//import draw1 from 'draw1';
 import CandyCrush from 'sketches/candy-crush/CandyCrush';
 import './Canvas.css';
 
@@ -71,7 +70,7 @@ const Canvas = _ => {
         ref={audioRef}
         src={
           process.env.PUBLIC_URL +
-          'audio/we-wish-you-a-merry-christmas-traditionally-16th-century-english-christmas-carol-sheppard-flute-and-xmas-waltz-8848.mp3'
+          '/audio/we-wish-you-a-merry-christmas-traditionally-16th-century-english-christmas-carol-sheppard-flute-and-xmas-waltz-8848.mp3'
         }
         loop={true}
       />
