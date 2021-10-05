@@ -128,7 +128,15 @@ class CandyCrush {
     // set text
     const text = new PointText(view.center);
     this.text = text;
-    text.content = "Season's Greetings!";
+    let textContent = "Season's Greetings!";
+    const pathname = window.location.pathname;
+    if (pathname.includes('index_tc.html')) {
+      textContent = '節日快樂';
+    }
+    if (pathname.includes('index_sc.html')) {
+      textContent = '节日快乐';
+    }
+    text.content = textContent;
     text.opacity = 0;
     text.fontSize = 36;
     text.position = new Point(viewCenterX, viewCenterY * 0.65);
