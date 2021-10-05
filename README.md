@@ -1,3 +1,8 @@
+### How to convert create-react-app to Preact?
+
+https://stackoverflow.com/questions/581
+02009/how-to-convert-create-react-app-to-preact
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
