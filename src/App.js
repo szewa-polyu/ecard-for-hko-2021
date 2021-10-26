@@ -1,7 +1,7 @@
 import Canvas from 'Canvas';
 import './App.css';
 
-function App() {
+const App = _ => {
   return (
     <div className='App'>
       <div className='ecard-container'>
@@ -9,6 +9,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
