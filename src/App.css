@@ -1,27 +1,25 @@
 .App {
-  --canvasWidthHeightRatio: calc(550 / 320);
+  --canvasHeightWidthRatio: calc(320 / 550);
   --canvasMaxWidth: 550px;
-  --canvasMaxHeight: calc(
-    var(--canvasMaxWidth) / var(--canvasWidthHeightRatio)
-  );
+
+  --canvasWidth: var(--canvasMaxWidth);
 
   text-align: center;
 }
 
-.App .ecard-container {
-  /* background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; */
+@media screen and (max-width: 549px) {
+  .App {
+    --canvasWidth: 100vw;
+  }
+}
 
-  /* max-width: var(--canvasMaxWidth);
-  max-height: var(--canvasMaxHeight);  
-  width: 100%;
-  padding-top: calc(1 / var(--canvasWidthHeightRatio) * 100%);
+.App .ecard-container {
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  width: var(--canvasWidth);
+  height: calc(var(--canvasWidth) * var(--canvasHeightWidthRatio));
   margin: auto;
   align-content: center;
   position: absolute;
@@ -29,17 +27,5 @@
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0; */
-
-  background-color: red;
-  width: 100%;
-  padding-top: calc(1 / var(--canvasWidthHeightRatio) * 100%);
-  margin: auto;
-  align-content: center;
-  max-width: var(--canvasMaxWidth);
-  overflow: hidden;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  right: 0;
 }

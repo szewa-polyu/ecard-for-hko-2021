@@ -49,7 +49,7 @@
 
   cursor: pointer;
 
-  border-radius: 10px;
+  border-radius: calc(var(--canvasWidth) * 10 / 550);
 }
 
 .canvas-container .button.show {
@@ -69,15 +69,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 74px;
-  height: 74px;
+  width: calc(var(--canvasWidth) * 74 / 550);
+  height: calc(var(--canvasWidth) * 74 / 550);
   border-style: solid;
-  border-width: 37px;
+  border-width: calc(var(--canvasWidth) * 37 / 550);
   border-color: var(--xmas-green);
 
   background-color: var(--xmas-red);
 
-  border-width: 37px 0px 37px 74px;
+  border-width: calc(var(--canvasWidth) * 37 / 550) 0
+    calc(var(--canvasWidth) * 37 / 550) calc(var(--canvasWidth) * 74 / 550);
   border-color: var(--xmas-red) var(--xmas-red) var(--xmas-red)
     var(--xmas-green);
 }
@@ -89,10 +90,10 @@
   right: 0.25%;
   transform: translate(-50%, -50%);
 
-  width: 37px;
-  height: 37px;
+  width: calc(var(--canvasWidth) * 37 / 550);
+  height: calc(var(--canvasWidth) * 37 / 550);
   border-style: solid;
-  border-width: 10px;
+  border-width: calc(var(--canvasWidth) * 10 / 550);
   border-color: var(--xmas-green);
 
   background-color: var(--xmas-red);
