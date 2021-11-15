@@ -1,6 +1,7 @@
 .App {
-  --canvasHeightWidthRatio: calc(320 / 550);
+  --canvasMaxWidthVal: 550;
   --canvasMaxWidth: 550px;
+  --canvasHeightWidthRatio: calc(320 / var(--canvasMaxWidthVal));
 
   --canvasWidth: var(--canvasMaxWidth);
 

@@ -49,7 +49,7 @@
 
   cursor: pointer;
 
-  border-radius: calc(var(--canvasWidth) * 10 / 550);
+  border-radius: calc(var(--canvasWidth) * 10 / var(--canvasMaxWidthVal));
 }
 
 .canvas-container .button.show {
@@ -69,16 +69,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: calc(var(--canvasWidth) * 74 / 550);
-  height: calc(var(--canvasWidth) * 74 / 550);
+  width: calc(var(--canvasWidth) * 74 / var(--canvasMaxWidthVal));
+  height: calc(var(--canvasWidth) * 74 / var(--canvasMaxWidthVal));
   border-style: solid;
-  border-width: calc(var(--canvasWidth) * 37 / 550);
+  border-width: calc(var(--canvasWidth) * 37 / var(--canvasMaxWidthVal));
   border-color: var(--xmas-green);
 
   background-color: var(--xmas-red);
 
-  border-width: calc(var(--canvasWidth) * 37 / 550) 0
-    calc(var(--canvasWidth) * 37 / 550) calc(var(--canvasWidth) * 74 / 550);
+  border-width: calc(var(--canvasWidth) * 37 / var(--canvasMaxWidthVal)) 0
+    calc(var(--canvasWidth) * 37 / var(--canvasMaxWidthVal))
+    calc(var(--canvasWidth) * 74 / var(--canvasMaxWidthVal));
   border-color: var(--xmas-red) var(--xmas-red) var(--xmas-red)
     var(--xmas-green);
 }
@@ -90,10 +91,10 @@
   right: 0.25%;
   transform: translate(-50%, -50%);
 
-  width: calc(var(--canvasWidth) * 37 / 550);
-  height: calc(var(--canvasWidth) * 37 / 550);
+  width: calc(var(--canvasWidth) * 37 / var(--canvasMaxWidthVal));
+  height: calc(var(--canvasWidth) * 37 / var(--canvasMaxWidthVal));
   border-style: solid;
-  border-width: calc(var(--canvasWidth) * 10 / 550);
+  border-width: calc(var(--canvasWidth) * 10 / var(--canvasMaxWidthVal));
   border-color: var(--xmas-green);
 
   background-color: var(--xmas-red);

@@ -3,8 +3,10 @@
 
 import Paper from 'paper';
 import Ball from './Ball';
+import config from 'config';
 
 const { Point, Raster, PointText, Color } = Paper;
+const { canvasMaxWidth } = config;
 
 class CandyCrush {
   constructor() {
@@ -138,7 +140,7 @@ class CandyCrush {
     }
     text.content = textContent;
     text.opacity = 0;
-    text.fontSize = 36;
+    text.fontSize = (36 * viewSizeWidth) / canvasMaxWidth;
     text.position = new Point(viewCenterX, viewCenterY * 0.65);
     this.textColorStop1 = new Color(1, 0, 0);
     this.textColorStop2 = new Color(0, 1, 0);

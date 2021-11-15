@@ -2,8 +2,10 @@
 // http://paperjs.org/examples/candy-crash/
 
 import Paper from 'paper';
+import config from 'config';
 
 const { Point, Path, Raster } = Paper;
+const { canvasMaxWidth } = config;
 
 class Ball {
   constructor(r, p, v, imgUrl, finalPos) {
@@ -44,6 +46,7 @@ class Ball {
       // color.alpha = 0.5;
       // this.path.fillColor = color;
 
+      raster.scale(Paper.view.size.width / canvasMaxWidth);
       this.radius = Math.max(raster.width, raster.height) / 2;
     };
 
