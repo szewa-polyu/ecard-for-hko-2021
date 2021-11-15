@@ -6,15 +6,30 @@
   --xmas-red: rgb(228, 10, 45);
 
   position: relative;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  align-content: center;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .canvas-container .ecard-canvas {
-  width: 550px;
-  height: 320px;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  align-content: center;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   transition: var(--transition-default);
-
-  outline: var(--xmas-green) 3px solid;
 
   /* https://www.eggradients.com/category/blue-gradient */
   background-color: #abe9cd;
