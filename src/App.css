@@ -1,6 +1,9 @@
 .App {
+  --canvasWidthHeightRatio: calc(550 / 320);
   --canvasMaxWidth: 550px;
-  --canvasMaxHeight: var(--canvasMaxWidth) * 320 / 550;
+  --canvasMaxHeight: calc(
+    var(--canvasMaxWidth) / var(--canvasWidthHeightRatio)
+  );
 
   text-align: center;
 }
@@ -15,10 +18,10 @@
   font-size: calc(10px + 2vmin);
   color: white; */
 
-  max-width: var(--canvasMaxWidth);
-  max-height: var(--canvasMaxHeight);
-  height: 100%;
+  /* max-width: var(--canvasMaxWidth);
+  max-height: var(--canvasMaxHeight);  
   width: 100%;
+  padding-top: calc(1 / var(--canvasWidthHeightRatio) * 100%);
   margin: auto;
   align-content: center;
   position: absolute;
@@ -26,5 +29,17 @@
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; */
+
+  background-color: red;
+  width: 100%;
+  padding-top: calc(1 / var(--canvasWidthHeightRatio) * 100%);
+  margin: auto;
+  align-content: center;
+  max-width: var(--canvasMaxWidth);
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
